@@ -22,7 +22,7 @@ export class Kernel {
    */
   init() {
     console.log("=========Running init=========\n")
-    const b = fs.readFileSync('ascii');
+    const b = fs.readFileSync('test-prog');
     const testProgram = new Uint32Array(b.buffer, b.byteOffset, b.byteLength / Uint32Array.BYTES_PER_ELEMENT);
     this.processes.push(new Process(testProgram, 256, 0));
     this.timeStart = Date.now();

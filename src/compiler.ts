@@ -8,7 +8,6 @@ program
   .usage('[options] <input>')
   .option('-a, --asm', 'assemble')
   .option('-o, --out <file>', 'specify the output file')
-  .option('-c, --cheese [type]', 'Add the specified type of cheese [marble]', 'marble')
   .parse(process.argv);
  
 if (program.asm) {

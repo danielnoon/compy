@@ -149,8 +149,7 @@ export class Process {
         val1 = this.executable[this.index + 2];
         val = this.registers[reg];
         this.registers[reg] = val + val1;
-        if (val1 + val > 4294967295) this.flags[0x1] = true;
-        else this.flags[0x1] = false;
+        this.flags[0x1] = val1 + val > 0xFFFFFFFF;
         this.index += 3;
         break;
       case 0x7: //addR
@@ -201,7 +200,7 @@ export class Process {
         this.registers[0x3] = (tmp / 17179869184>>>0);
         this.index += 2;
         break;
-      case 0xc: //divR
+      case 0xd: //divR
         reg = this.executable[this.index + 1];
         val = this.registers[reg];
         val1 = (this.registers[0x3] * 17179869184) + this.registers[0x0];
